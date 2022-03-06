@@ -1,31 +1,32 @@
 package com.bridgelabz;
 
-        import java.util.Random;
+import java.util.Random;
 
 public class SnakeAndLadder {
     public static void main(String[] args) {
         System.out.println(" --- Snake and Ladder Problem --- ");
 
-        int playerPosition = 0;
-        System.out.println("Game starts from : " + playerPosition);
-
+        int playerPosition = 100;
         Random random = new Random();
         int playerRollDie = random.nextInt(6) + 1;
-        System.out.println("Dice face : " + playerRollDie);
         int rollDie = random.nextInt(3);
-        switch (rollDie) {
-            case 0:
-                playerPosition = playerPosition + playerRollDie;
-                break;
-            case 1:
-                playerPosition = playerPosition - playerRollDie;
-                break;
-            case 2:
-                playerPosition = playerPosition;
-                break;
-            default:
-                break;
+        while (playerPosition < 100) {
+            switch (rollDie) {
+                case 0 -> playerPosition = playerPosition + playerRollDie;
+                case 1 -> {
+                    playerPosition = playerPosition - playerRollDie;
+                    if (playerPosition <= 0) {
+                        SnakeAndLadder.main(args);
+                    }
+                }
+                case 2 -> playerPosition = playerPosition;
+                default -> {
+                }
+            }
         }
-        System.out.println("Player is at : " + playerPosition);
+        if (playerPosition >= 100) {
+            System.out.println("you won the game");
+            System.exit(0);
+        }
     }
 }

@@ -1,10 +1,13 @@
 package com.bridgelabz;
 
+import java.util.Random;
+
 public class SnakeAndLadder {
     public static void main(String[] args) {
-        System.out.println(" --- Snake and Ladder Problem --- ");
+        System.out.println("--- Snake and Ladder Problem ---");
 
-        int startPosition = 0;
-        System.out.println("Game starts from : " + startPosition);
+        Random random = new Random();
+        int rollDie = random.nextInt(6 ) + 1;
+        System.out.println("Dice face is : " + rollDie);
     }
 }
